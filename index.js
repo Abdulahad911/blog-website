@@ -4,6 +4,7 @@ const userRouter = require("./routes/user")
 const { connecteToMongoDB } = require("./connection")
 const cookieParser = require('cookie-parser')
 const { checkForAuthenticationCookie } = require('./middleware/authentication')
+const blogRouter = require("./routes/blog")
 
 const app = express()
 const PORT = 8000
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/user", userRouter)
+app.use("/blog", blogRouter)
 
 app.listen(PORT, () => {
     console.log(`Server running at port: ${PORT}`);
